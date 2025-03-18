@@ -69,6 +69,7 @@ function Invoke-SCOMDecrypt
 		if ($dataset.Tables[0].Rows[$i].Data -ne [System.DBNull]::Value -and $dataset.Tables[0].Rows[$i].Username -ne [System.DBNull]::Value)
 		{
 			$user = $dataset.Tables[0].Rows[$i].Username
+			$domain = $dataset.Tables[0].Rows[$i].Domain
 			$passw = [System.Text.Encoding]::UTF8.GetString($scom.Decrypt($dataset.Tables[0].Rows[$i].Data))
 			
 			# Cleans up the spaces in the password
